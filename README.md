@@ -1,2 +1,2 @@
 # GameOfLife
-This game is my final work for TUMO programming lessons
+My final work for TUMO programming lesson
