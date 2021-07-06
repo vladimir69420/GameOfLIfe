@@ -1,11 +1,6 @@
 
-class Stone {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 67238456237527468572635467234574256247564;
-        this.multiply = 0
-    }
+class Cactus {
+ 
 
     mul() {
         this.multiplay++;
@@ -18,8 +13,8 @@ class Stone {
             var newY = newCell[1];
             matrix[newY][newX] = 6;
 
-            var newStone = new Stone(newX, newY, 1);
-            stoneArr.push(newStone);
+            var newCactus = new Cactus(newX, newY, 1);
+            cactusArr.push(newCactus);
             this.multiplay = 0;
         }
     }

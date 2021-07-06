@@ -1,4 +1,4 @@
-function generator(matLen, gr, grEat, pred, darkwiz, vir, stone) {
+function generator(matLen, gr, grEat, pred, darkwiz, vir, cactus, berserk) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
@@ -41,33 +41,41 @@ function generator(matLen, gr, grEat, pred, darkwiz, vir, stone) {
             matrix[x][y] = 5;
         }
     }
-    for (let i = 0; i < stone; i++) {
+    for (let i = 0; i < cactus; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 6;
         }
     }
+    for (let i = 0; i < berserk; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 7;
+        }
+
+    }
+
     return matrix;
 }
 
 let side = 20;
-let matrix = generator(15,30,15,3,1,1,3,1);
+let matrix = generator(15, 30, 15, 3, 1, 1, 3, 1, 2);
 
 var grassArr = []
 var grassEaterArr = []
 var predatorArr = []
 var darkwizardArr = []
 var virusArr = []
-var stoneArr = []
-
+var cactusArr = []
+var berserkArr = []
 
 
 function setup() {
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-
 
 
     for (var y = 0; y < matrix.length; y++) {
@@ -93,11 +101,13 @@ function setup() {
                 virusArr.push(vir)
             }
             else if (matrix[y][x] == 6) {
-                var stone = new Stone(x, y)
-                stoneArr.push(stone)
+                var cactus = new Cactus(x, y)
+                cactusArr.push(cactus)
             }
-
-
+            else if (matrix[y][x] == 7) {
+                var berserk = new Berserk(x, y)
+                berserkArr.push(berserk)
+            }
 
         }
     }
@@ -134,9 +144,15 @@ function draw() {
                 rect(x * side, y * side, side, side)
             }
             else if (matrix[y][x] == 6) {
-                fill(120, 122, 121)
+                fill(29, 178, 44)
                 rect(x * side, y * side, side, side)
             }
+            else if (matrix[y][x] == 7) {
+                fill("red")
+                rect(x * side, y * side, side, side)
+            }
+
+
 
         }
     }
@@ -162,11 +178,14 @@ function draw() {
     for (var i in virusArr) {
         virusArr[i].infect();
     }
-    for (var i in stoneArr) {
+    for (var i in cactusArr) {
 
     }
-}
+    for (var i in berserkArr) {
+        berserkArr[i].kill();
+    }
 
+}
 
 
 
