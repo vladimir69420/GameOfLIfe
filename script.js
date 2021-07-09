@@ -81,8 +81,8 @@ function generator(matLen, gr, grEat, pred, darkwiz, vir, cactus, berserk, ter, 
     return matrix;
 }
 
-let side = 20;
-let matrix = generator(15, 30, 15, 3, 1, 1, 3, 1, 2, 1, 2);
+let side = 50;
+let matrix = generator(15, 30, 20, 3, 1, 1, 3, 1, 2, 1, 2);
 
 var grassArr = []
 var grassEaterArr = []
