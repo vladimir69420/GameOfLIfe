@@ -43,6 +43,10 @@ class Predator extends LivingCreature {
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
+
+            if (this.chooseCell(6).length > 0) {
+                this.die()
+            }
         }
         else {
             if (this.energy < 0) {

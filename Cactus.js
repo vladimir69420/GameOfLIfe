@@ -1,4 +1,7 @@
-class Stone {
+
+class Cactus {
+ 
+
     mul() {
         this.multiplay++;
         var emptyCells = this.chooseCell(0);
@@ -8,7 +11,7 @@ class Stone {
         if (newCell && this.multiplay >= 7) {
             var newX = newCell[0];
             var newY = newCell[1];
-            matrix[newY][newX] = 9;
+            matrix[newY][newX] = 6;
 
             var newCactus = new Cactus(newX, newY, 1);
             cactusArr.push(newCactus);
