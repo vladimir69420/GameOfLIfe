@@ -1,4 +1,5 @@
-class GunPowder extends LivingCreature {
+let LivingCreature = require("./class.js")
+module.exports = class GunPowder extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.multiply = 0
@@ -7,7 +8,7 @@ class GunPowder extends LivingCreature {
     mul() {
         this.multiplay++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
         if (newCell && this.multiplay >= 7) {

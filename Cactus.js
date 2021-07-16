@@ -1,11 +1,11 @@
-
-class Cactus {
+let LivingCreature = require("./class.js")
+module.exports = class Cactus {
  
 
     mul() {
         this.multiplay++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
         if (newCell && this.multiplay >= 7) {

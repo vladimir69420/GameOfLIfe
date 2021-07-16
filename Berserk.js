@@ -1,4 +1,5 @@
-class Berserk extends LivingCreature {
+let LivingCreature = require("./class.js")
+module.exports = class Berserk extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.multiply = 0
@@ -16,7 +17,7 @@ class Berserk extends LivingCreature {
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
         if (newCell && this.multiply >= 15) {

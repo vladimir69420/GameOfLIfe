@@ -1,4 +1,5 @@
-class Virus extends LivingCreature {
+let LivingCreature = require("./class.js")
+module.exports = class Virus extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.energy = 15;
@@ -87,6 +88,7 @@ class Virus extends LivingCreature {
                     break
                 }
             }
+            this.multiply++
 
         }
         else {
