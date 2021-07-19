@@ -13,7 +13,7 @@ server.listen(3000);
 matrix = [];
 
 function generator(matLen, gr, grEat, pred, darkwiz, vir, cactus, berserk, ter, gun) {
-    
+
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
         for (let j = 0; j < matLen; j++) {
@@ -82,12 +82,12 @@ function generator(matLen, gr, grEat, pred, darkwiz, vir, cactus, berserk, ter, 
         if (matrix[x][y] == 0) {
             matrix[x][y] = 10;
         }
-    
+
 
     }
 
 
-    io.sockets.emit("send matrix" , matrix)
+    io.sockets.emit("send matrix", matrix)
     return matrix;
 }
 
@@ -118,51 +118,51 @@ GunPowder = require("./GunPowder")
 function createObject(matrix) {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
-        
-                    if (matrix[y][x] == 1) {
-                        var gr = new Grass(x, y);
-                        grassArr.push(gr)
-                    } else if (matrix[y][x] == 2) {
-                        var grEat = new GrassEater(x, y)
-                        grassEaterArr.push(grEat)
-                    }
-                    else if (matrix[y][x] == 3) {
-                        var predat = new Predator(x, y)
-                        predatorArr.push(predat)
-                    }
-                    else if (matrix[y][x] == 4) {
-                        var darkwiz = new Darkwizard(x, y)
-                        darkwizardArr.push(darkwiz)
-                    }
-                    else if (matrix[y][x] == 5) {
-                        var vir = new Virus(x, y)
-                        virusArr.push(vir)
-                    }
-                    else if (matrix[y][x] == 6) {
-                        var cactus = new Cactus(x, y)
-                        cactusArr.push(cactus)
-                    }
-                    else if (matrix[y][x] == 7) {
-                        var berserk = new Berserk(x, y)
-                        berserkArr.push(berserk)
-                    }
-                    else if (matrix[y][x] == 8) {
-                        var ter = new Terrorist(x, y)
-                        terroristArr.push(ter)
-                    }
-                    else if (matrix[y][x] == 9) {
-                        var stone = new Stone(x, y)
-                        stoneArr.push(stone)
-                    }
-                    else if (matrix[y][x] == 10) {
-                        var gunpo = new GunPowder(x, y)
-                        gunpoArr.push(gunpo)
-                    }
-                }
+
+            if (matrix[y][x] == 1) {
+                var gr = new Grass(x, y);
+                grassArr.push(gr)
+            } else if (matrix[y][x] == 2) {
+                var grEat = new GrassEater(x, y)
+                grassEaterArr.push(grEat)
             }
-            
-    io.sockets.emit( "send matrix" , matrix )
-    
+            else if (matrix[y][x] == 3) {
+                var predat = new Predator(x, y)
+                predatorArr.push(predat)
+            }
+            else if (matrix[y][x] == 4) {
+                var darkwiz = new Darkwizard(x, y)
+                darkwizardArr.push(darkwiz)
+            }
+            else if (matrix[y][x] == 5) {
+                var vir = new Virus(x, y)
+                virusArr.push(vir)
+            }
+            else if (matrix[y][x] == 6) {
+                var cactus = new Cactus(x, y)
+                cactusArr.push(cactus)
+            }
+            else if (matrix[y][x] == 7) {
+                var berserk = new Berserk(x, y)
+                berserkArr.push(berserk)
+            }
+            else if (matrix[y][x] == 8) {
+                var ter = new Terrorist(x, y)
+                terroristArr.push(ter)
+            }
+            else if (matrix[y][x] == 9) {
+                var stone = new Stone(x, y)
+                stoneArr.push(stone)
+            }
+            else if (matrix[y][x] == 10) {
+                var gunpo = new GunPowder(x, y)
+                gunpoArr.push(gunpo)
+            }
+        }
+    }
+
+    io.sockets.emit("send matrix", matrix)
+
 }
 
 function game() {
@@ -194,8 +194,8 @@ function game() {
     }
     for (var i in terroristArr) {
         terroristArr[i].grab()
-        
-        
+
+
     }
     for (var i in stoneArr) {
 
@@ -204,14 +204,14 @@ function game() {
 
     }
     console.log(matrix[0]);
-    io.sockets.emit( "send matrix" , matrix)
+    io.sockets.emit("send matrix", matrix)
 
 }
 
-setInterval(game , 400)
+setInterval(game, 400)
 
-io.on("connection" , function(socket) {
+io.on("connection", function (socket) {
     createObject(matrix)
 
-    
+
 })

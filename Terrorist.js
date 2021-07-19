@@ -45,7 +45,7 @@ module.exports = class Terrorist extends LivingCreature {
                 [this.x + 1, this.y + 1]
             ]
 
-        for (const i in target) {
+        for (i in target) {
             let x = target[i][0]
             let y = target[i][0]
 
