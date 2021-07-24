@@ -16,21 +16,19 @@ module.exports = class Grass extends LivingCreature {
     }
 
     mul() {
-        this.multiplay++;
+        this.multiply++;
         var emptyCells = this.chooseCell(0);
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
-        if (newCell && this.multiplay >= 7) {
+        if (newCell && this.multiply >= 15) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 1;
 
-            var newGrass = new Grass(newX, newY, 1);
-            grassArr.push(newGrass);
-            this.multiplay = 0;
+            var gr = new Grass(newX, newY);
+            grassArr.push(gr);
+            this.multiply = 0;
         }
     }
-
 }
- 

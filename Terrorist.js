@@ -115,7 +115,7 @@ module.exports = class Terrorist extends LivingCreature {
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
-        if (newCell && this.multiply >= 15) {
+        if (newCell && this.multiply >= 15 ) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 8;

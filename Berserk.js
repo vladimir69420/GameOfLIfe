@@ -3,7 +3,7 @@ module.exports = class Berserk extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         this.multiply = 0
-        this.energy = 30
+        this.energy = 10
 
     }
     getNewCoordinates() {

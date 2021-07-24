@@ -2,11 +2,22 @@ var socket = io()
 
 
 
-side = 60;
+
+
+Weather = "Spring"
+
+socket.on("Send Weather", function (data){
+    console.log(data);
+    
+    Weather = data
+})
+
+
+side = 20;
 
 function setup() {
-    createCanvas(15 * side, 13 * side);
-    background("#acacac");
+    createCanvas(30 * side, 30 * side);
+    background("#353836");
 }
 
 function nkaritch(matrix) {
@@ -15,11 +26,30 @@ function nkaritch(matrix) {
             var obj = matrix[y][x];
 
             if (obj == 1) {
+                
+                
+                
+                if (Weather == "Spring") {
                 fill("green");
                 rect(x * side, y * side, side, side);
+                }
+                else if (Weather == "Summer") {
+                    fill("#C4F013")
+                    rect(x * side, y * side, side , side)
+
+                }
+                else if (Weather == "Autumn") {
+                    fill("#FDB615")
+                    rect(x * side, y * side, side, side)
+                }
+                else if (Weather == "Winter") {
+                    fill(231, 231, 231)
+                    rect(x * side, y * side, side, side)
+                }
+
             }
             else if (obj == 0) {
-                fill("#acacac");
+                fill("#353836");
                 rect(x * side, y * side, side, side);
             }
             else if (obj == 2) {
@@ -67,10 +97,24 @@ function nkaritch(matrix) {
 }
    
 
-setInterval(
-    function () {
-        socket.on("send matrix" , nkaritch)
-    }, 1000)
+
+    socket.on("send matrix" , nkaritch)
+
+
+    function kill() {
+        socket.emit("kill")
+    }
+    function addGrass() {
+        socket.emit("add grass")
+    }
+    function addGrassEater() {
+        socket.emit("add grassEater")
+    }
+
+
+
+
+
 
 
 
